@@ -1,33 +1,34 @@
-def lin(l):
-    p=int(input("Search element:"))
-    for i in range(len(l)):
-        if l[i]==p:
-            print(p,"found at position",i+1)
+def linsearch(x,s):
+    for i in range(len(s)):
+        if s[i]==x:
+            print("Element found at",i)
             break
     else:
-        print("Search unsuccessful")
-def bin(l):
-    l.sort()
-    p=int(input("Enter search element:"))
-    print(l)
-    a=0
-    b=len(l)-1
-    v=(a+b)//2
-    while a<=b:
-        if p==l[v]:
-            print("Element found at",m+1)
-            break
-        elif p>l[v]:
-            a=m+1
-        else:
-            b=m-1
-    else:
-        print("Element not found")
+        print("Not found")
 
-l=eval(input("Enter list:"))
-i=input("Enter choice:")
-if  i==1:
-    lin(l)
+def binsearch(x,s):
+    s.sort()
+    print("Sorted list",s)
+    beg=0
+    last=len(s)-1
+    while beg<=last:
+        mid=(beg+last)//2
+        if x==s[mid]:
+            print("Element found at",mid)
+            break
+        elif x>s[mid]:
+            beg=mid+1
+        else:
+            last=mid-1
+    else:
+        print("Not found")
+s=eval(input("Enter a numeric list:"))
+x=int(input("Enter search element:"))
+print("1.Linear search\n2.Binary search")
+c=int(input("Enter choice:"))
+if c==1:
+    linsearch(x,s)
+elif c==2:
+    binsearch(x,s)
 else:
-    bin(l)
-    
+    print("Invalid hoice")
